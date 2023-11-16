@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import EditModal from "@/components/modals/EditModal";
+import  MessageModal  from "@/components/modals/MessageModal";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <LoginModal />
         <RegisterModal />
         <EditModal />
+        <MessageModal />
         <Component {...pageProps} />
       </Layout>
     </SessionProvider>

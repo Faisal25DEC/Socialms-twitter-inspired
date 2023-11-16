@@ -7,9 +7,17 @@ interface AvatarProps {
   userId: string;
   isLarge?: boolean;
   hasBorder?: boolean;
+  size?: string;
+  src?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
+const Avatar: React.FC<AvatarProps> = ({
+  userId,
+  isLarge,
+  hasBorder,
+  size,
+  src,
+}) => {
   const { data: fetchedUser } = useUser(userId);
   const router = useRouter();
   const onClick = useCallback(
@@ -24,9 +32,12 @@ const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
   return (
     <div
       className={`${hasBorder ? "border-4 border-black" : ""}
-        ${isLarge ? "h-32" : "h-12"}
-        ${isLarge ? "w-32" : "w-12"}
+        ${isLarge ? "h-28" : "h-12"}
+        ${isLarge ? "w-28" : "w-12"}
+        ${size === "sm" ? "w-10" : "w-12"}
+        ${size === "sm" ? "h-10" : "h-12"}
         rounded-full
+        object-cover
         hover:opacity-90
         transition
         cursor-pointer
@@ -40,7 +51,7 @@ const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
         }}
         alt="Avatar"
         onClick={onClick}
-        src={fetchedUser?.profileImage || "/images/placeholder.png"}
+        src={src ? src : fetchedUser?.profileImage || "/images/placeholder.png"}
       />
     </div>
   );

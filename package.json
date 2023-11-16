@@ -16,6 +16,7 @@
     "bcrypt": "^5.1.1",
     "date-fns": "^2.30.0",
     "dropzone": "^6.0.0-beta.2",
+    "firebase": "^10.6.0",
     "next": "^13.3.0",
     "next-auth": "^4.22.1",
     "react": "^18.2.0",
@@ -25,6 +26,7 @@
     "react-icons": "^4.11.0",
     "react-spinners": "^0.13.8",
     "swr": "^2.2.4",
+    "uuid": "^9.0.1",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
@@ -32,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.4.16",
     "eslint": "^8",
     "eslint-config-next": "^14.0.2",
