@@ -25,7 +25,9 @@ const Messages = () => {
         <ChatSidebar />
       </div>
       <div
-        className={`${!currentChat && "hidden"} flex-[2] text-white md:w-full `}
+        className={`${
+          !currentChat && "sm:hidden md:block"
+        } flex-[2] text-white  md:w-full `}
       >
         <Chat />
       </div>
