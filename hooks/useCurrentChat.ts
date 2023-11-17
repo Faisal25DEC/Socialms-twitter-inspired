@@ -5,6 +5,7 @@ import useCurrentUser from "./useCurrentUser";
 interface CurrentChatStore {
   currentChat: any;
   setCurrentChat: (currentUser: any, user: any) => void;
+  setCurrentChatNull: () => void;
 }
 
 const useCurrentChat = create<CurrentChatStore>((set) => {
@@ -19,6 +20,10 @@ const useCurrentChat = create<CurrentChatStore>((set) => {
               ? currentUser.id + user.id
               : user.id + currentUser.id,
         },
+      }),
+    setCurrentChatNull: () =>
+      set({
+        currentChat: null,
       }),
   };
 });

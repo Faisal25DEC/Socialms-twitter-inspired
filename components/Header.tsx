@@ -7,9 +7,15 @@ interface HeaderProps {
   label: string;
   showBackArrow?: boolean;
   Icon?: React.ElementType;
+  onClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ label, showBackArrow, Icon }) => {
+const Header: React.FC<HeaderProps> = ({
+  label,
+  showBackArrow,
+  Icon,
+  onClick,
+}) => {
   const router = useRouter();
   const messageModal = useMessageModal();
 
@@ -33,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow, Icon }) => {
         <Icon
           size={24}
           className="hover:opacity-70 cursor-pointer"
-          onClick={messageModal.onOpen}
+          onClick={onClick}
         />
       )}
     </div>
