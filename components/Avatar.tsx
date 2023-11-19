@@ -34,8 +34,8 @@ const Avatar: React.FC<AvatarProps> = ({
       className={`${hasBorder ? "border-4 border-black" : ""}
         ${isLarge ? "h-28" : "h-12"}
         ${isLarge ? "w-28" : "w-12"}
-        ${size === "sm" ? "w-10" : "w-12"}
-        ${size === "sm" ? "h-10" : "h-12"}
+        ${size === "sm" ? "w-8" : "w-12"}
+        ${size === "sm" ? "h-8" : "h-12"}
         rounded-full
         object-cover
         hover:opacity-90

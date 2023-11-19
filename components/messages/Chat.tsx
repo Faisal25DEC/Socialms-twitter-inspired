@@ -18,6 +18,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import NoChat from "./NoChat";
 import { LoaderIcon } from "react-hot-toast";
+import Avatar from "../Avatar";
 
 const Chat = () => {
   const { currentChat, setCurrentChatNull } = useCurrentChat();
@@ -29,6 +30,18 @@ const Chat = () => {
   const [text, setText] = useState<string>("");
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const scrollRef: RefObject<HTMLDivElement> = useRef(null);
+
+  const [scroll, setScroll] = useState(0);
+  const headerRef: RefObject<HTMLDivElement> = useRef(null);
+
+  useEffect(() => {
+    if (headerRef.current && scroll > 298) {
+      headerRef.current.style.display = "flex";
+    } else if (headerRef.current) {
+      headerRef.current.style.display = "none";
+    }
+  }, [scroll]);
+
   useEffect(() => {
     const unSub =
       currentChat &&
@@ -114,19 +127,45 @@ const Chat = () => {
 
   return currentChat ? (
     <>
-      <div className="">
-        <Header
-          label="Direct Messages"
-          Icon={BiWindowClose}
-          onClick={() => {
-            setCurrentChatNull();
-          }}
-        />
+      <div className="w-full overflow-hidden">
         <div
+          className={`${
+            headerRef.current?.style.display === "flex" ? "hidden" : "block"
+          }`}
+        >
+          <Header
+            label="Direct Messages"
+            Icon={BiWindowClose}
+            onClick={() => {
+              setCurrentChatNull();
+            }}
+          />
+        </div>
+        <div
+          ref={headerRef}
+          className={` hidden gap-4 items-center bg-black p-4 h-16`}
+        >
+          <Avatar size="sm" userId={currentChat.user.id} />
+          <p>{currentChat.user.name} </p>
+          <BiWindowClose
+            className="ml-auto"
+            size={22}
+            onClick={() => {
+              setCurrentChatNull();
+            }}
+          />
+        </div>
+        <div
+          onScroll={(e: any) => {
+            setScroll(e.target.scrollTop);
+          }}
           className="flex flex-col gap-4 p-10 overflow-scroll overflow-x-hidden"
-          style={{ height: "calc(100vh - 8rem)" }}
+          style={{
+            height: "calc(100vh - 8rem)",
+          }}
         >
           <ChatHeader />
+
           {messages?.map((m: any) => {
             return (
               <div key={m.id} ref={scrollRef}>

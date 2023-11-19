@@ -45,7 +45,7 @@ const ChatSidebar = () => {
                 <ChatItem
                   user={ele[1].userInfo}
                   fromChatSidebar
-                  lastMessage={ele[1].lastMessage?.text}
+                  lastMessage={ele[1].lastMessage?.text.substring(0, 75)}
                 />
               </div>
             );

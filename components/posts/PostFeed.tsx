@@ -7,11 +7,11 @@ interface PostFeedProps {
 }
 
 const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
-  const { data: posts = [] } = usePosts(userId);
+  const { data: posts = [], isLoading } = usePosts(userId);
 
   return (
     <>
-      {posts.length > 0 ? (
+      {!isLoading ? (
         posts.map((post: Record<string, any>) => {
           return <PostItem userId={userId} key={post.id} data={post} />;
         })

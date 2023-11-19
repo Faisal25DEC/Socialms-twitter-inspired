@@ -26,8 +26,8 @@ const Messages = () => {
       </div>
       <div
         className={`${
-          !currentChat && "sm:hidden md:block"
-        } flex-[2] text-white  md:w-full `}
+          !currentChat && "hidden md:block"
+        } flex-[2] text-white  md:w-full overflow-hidden`}
       >
         <Chat />
       </div>
