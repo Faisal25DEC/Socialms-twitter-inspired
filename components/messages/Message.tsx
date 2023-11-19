@@ -15,7 +15,7 @@ const Message = ({ own, message }: { own?: boolean; message: any }) => {
           </div>
           <div
             className={`w-full p-4 ${own ? "bg-sky-600" : "bg-white"}
-        ${own ? "text-white" : "text-bla-ck"}`}
+        ${own ? "text-white" : "text-black"}`}
           >
             <p className=" font-normal w-[100%] text-sm ">{message.text}</p>
           </div>
